@@ -42,4 +42,10 @@ class Address(
         result = 31 * result + province.hashCode()
         return result
     }
+
+    fun complet(): String {
+        return """
+        $street - $number, $district, $city, - $province
+        """.trimIdent()
+    }
 }
