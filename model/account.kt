@@ -3,7 +3,7 @@ package model
 class Account(
     var holder: String,
     val accountNumber: Int
-) : Authentication {
+) : Authenticates {
     var balance = 0.0
         private set
     companion object {
@@ -16,8 +16,8 @@ class Account(
         total++
     }
 
-    override fun authentication(password: Int): Boolean {
-        return holder.authentication(password)
+    override fun authenticates(password: Int): Boolean {
+        return holder.authenticates(password)
     }
 
     fun deposit(value: Double) {
@@ -34,7 +34,7 @@ class Account(
                 message = "insufficient balance, current $balance, value to be subtracted $value"
             )
         }
-        if (!authentication(password)){
+        if (!authenticates(password)){
             throw AutheticationFailException()
         }
         balance -= value
